@@ -12,10 +12,10 @@ import java.util.Optional;
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery,Long> {
 
-    Optional<List<Delivery>> findDeliveriesByDeliveryStatus(DeliveryStatus deliveryStatus);
+    List<Delivery> findDeliveriesByDeliveryStatus(DeliveryStatus deliveryStatus);
 
     Optional<Courier> assignCourierToBeDelivery(Long deliveryId,Long courierId);
-    List<Delivery> getDeliveriesByCourier();
+    List<Delivery> getDeliveriesByCourier(Courier courier);
     void findDeliveriesByDateRange();
     Optional<Delivery> findDeliveriesByOrderId(Long orderId);
 }

@@ -33,7 +33,7 @@ public class AuthController {
             return new ResponseEntity<>(new AppError(HttpStatus.UNAUTHORIZED.value(),
                     "Неправильный логин или пароль"), HttpStatus.UNAUTHORIZED);
         }
-        UserDetails userDetails = userService.loadUserByUsername(authRequest.getUsername());
+        UserDetails userDetails = userService.newLoadUserByUsername(authRequest.getUsername());
         String token = jwtTokenUtils.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
     }
